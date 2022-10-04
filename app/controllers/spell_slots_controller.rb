@@ -1,0 +1,2 @@
+class SpellSlotsController < ApplicationController
+end
