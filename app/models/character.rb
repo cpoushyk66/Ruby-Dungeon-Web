@@ -73,22 +73,22 @@ class Character < ApplicationRecord
         if (item_type[0] == "Weapon")
 
             if main_hand_types.include?(item_type[1])
-                self.equipment.find_by(equipment_type: "Main Hand").equip(pocket)
+                self.equipment.find_by(equipment_type: "Main Hand").equip(pocket.item)
             elsif off_hand_types.include?(item_type[1])
-                self.equipment.find_by(equipment_type: "Off Hand").equip(pocket)
+                self.equipment.find_by(equipment_type: "Off Hand").equip(pocket.item)
             end
 
         elsif (item_type[0] == "Armor")
 
             case item_type[1]
             when "Helm"
-                self.equipment.find_by(equipment_type: "Helm").equip(pocket)
+                self.equipment.find_by(equipment_type: "Helm").equip(pocket.item)
             when "Chestplate"
-                self.equipment.find_by(equipment_type: "Chestplate").equip(poket)
+                self.equipment.find_by(equipment_type: "Chestplate").equip(poket.item)
             when "Leggings"
-                self.equipment.find_by(equipment_type: "Legging").equip(pocket)
+                self.equipment.find_by(equipment_type: "Legging").equip(pocket.item)
             when "Boots"
-                self.equipment.find_by(equipment_type: "Boots").equip(pocket)
+                self.equipment.find_by(equipment_type: "Boots").equip(pocket.item)
             end
 
         end
