@@ -55,12 +55,12 @@ class Character < ApplicationRecord
     end
 
     def create_equipment
-        self.equipment.create(equip_type: "Helm")
-        self.equipment.create(equip_type: "Chestplate")
-        self.equipment.create(equip_type: "Legging")
-        self.equipment.create(equip_type: "Boots")
-        self.equipment.create(equip_type: "Main Hand")
-        self.equipment.create(equip_type: "Off Hand")        
+        self.equipment.create(equipment_type: "Helm")
+        self.equipment.create(equipment_type: "Chestplate")
+        self.equipment.create(equipment_type: "Legging")
+        self.equipment.create(equipment_type: "Boots")
+        self.equipment.create(equipment_type: "Main Hand")
+        self.equipment.create(equipment_type: "Off Hand")        
     end
 
     def equip_item(pocket)
@@ -73,22 +73,22 @@ class Character < ApplicationRecord
         if (item_type[0] == "Weapon")
 
             if main_hand_types.include?(item_type[1])
-                self.equipment.find_by(equip_type: "Main Hand").equip(pocket)
+                self.equipment.find_by(equipment_type: "Main Hand").equip(pocket)
             elsif off_hand_types.include?(item_type[1])
-                self.equipment.find_by(equip_type: "Off Hand").equip(pocket)
+                self.equipment.find_by(equipment_type: "Off Hand").equip(pocket)
             end
 
         elsif (item_type[0] == "Armor")
 
             case item_type[1]
             when "Helm"
-                self.equipment.find_by(equip_type: "Helm").equip(pocket)
+                self.equipment.find_by(equipment_type: "Helm").equip(pocket)
             when "Chestplate"
-                self.equipment.find_by(equip_type: "Chestplate").equip(poket)
+                self.equipment.find_by(equipment_type: "Chestplate").equip(poket)
             when "Leggings"
-                self.equipment.find_by(equip_type: "Legging").equip(pocket)
+                self.equipment.find_by(equipment_type: "Legging").equip(pocket)
             when "Boots"
-                self.equipment.find_by(equip_type: "Boots").equip(pocket)
+                self.equipment.find_by(equipment_type: "Boots").equip(pocket)
             end
 
         end
