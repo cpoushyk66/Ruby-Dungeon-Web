@@ -133,11 +133,12 @@ function App() {
             
             {currentUser != null && currentUser.admin ? <AdminControls currentUser={currentUser}/> : null}
             <Routes>
-                <Route path="/" element={<Home/>} />
                 <Route path="/town" element={<Town/>} />
                 <Route path="shop" element={<Shop updateCurrentCharacter={updateCurrentCharacter} currentCharacter={currentCharacter}/>} />
                 <Route path="/academy" element={<Academy handleAddCharacter={handleAddCharacter} currentUser={currentUser} currentCharacter={currentCharacter} />} />
                 <Route path="/dungeon" element={<Dungeon currentUser={currentUser} currentCharacter={currentCharacter} />} />
+                <Route exact path="/" element={<Home/>} />
+                <Route path="*" element={<Home/>} />
             </Routes>
             {errors.length > 0 && (
                 <ul style={{ color: "red" }}>
