@@ -33,9 +33,9 @@ function CreateUserForm({handleLogin}) {
         <div className="newUserFormAll">
             <h2>Sign Up here!</h2>
             <form onSubmit={handleSubmit} className="newUserForm">
-                <input onChange={setUsername}  value={username} type="text" placeholder="username..." required/>
-                <input onChange={setPassword} value={password} type="password" placeholder="password" required/>
-                <input onChange={setImage} value={image} type="text" placeholder="img url..." required/>
+                <input onChange={(e) => setUsername(e.target.value)}  value={username} type="text" placeholder="username..." required/>
+                <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="password" required/>
+                <input onChange={(e) => setImage(e.target.value)} value={image} type="text" placeholder="img url..." required/>
                 <button type="submit">Join the Adventure!</button>
             </form>
         </div>
