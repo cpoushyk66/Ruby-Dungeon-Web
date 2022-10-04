@@ -99,8 +99,8 @@ class Character < ApplicationRecord
         spell_damage = 0
 
         self.equipment.each do |equip|
-            if (equip.pocket_id != nil)
-                item = Pocket.find_by(id: equip.pocket_id).item
+            if (equip.item_id != nil)
+                item = Item.find_by(id: equip.item_id)
                 if item.stat_boost?("Intelligence")
                     spell_damage = spell_damage + item.bonus
                 end
@@ -115,8 +115,8 @@ class Character < ApplicationRecord
         attack_damage = 0
 
         self.equipment.each do |equip|
-            if (equip.pocket_id != nil)
-                item = Pocket.find_by(id: equip.pocket_id).item
+            if (equip.item_id != nil)
+                item = Item.find_by(id: equip.item_id)
                 if item.stat_boost?("Strength") || item.stat_boost?("Dexterity")
                     attack_damage = attack_damage + item.bonus
                 end

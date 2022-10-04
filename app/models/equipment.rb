@@ -1,6 +1,7 @@
 class Equipment < ApplicationRecord
 
   belongs_to :wearer, polymorphic: true
+  has_one :item
 
   def equip(item)
               
