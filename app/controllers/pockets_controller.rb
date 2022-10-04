@@ -1,0 +1,2 @@
+class PocketsController < ApplicationController
+end

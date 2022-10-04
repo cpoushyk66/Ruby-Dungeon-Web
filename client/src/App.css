@@ -1,38 +1,753 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Ultra', serif;
+    color: black;
+    background-image: url("../assets/images/background_ore.gif");
+    height: 100%;
+    overflow-y: auto;
+    
+}
+
+html *::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.button {
+    color: black;
+}
+
+
+.root {
+    width: 100%;
+}
+
 .App {
-  text-align: center;
+    color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home {
+    text-align: center;
+    color: white;
+    background-image: url("../assets/images/ruby.gif");
+    background-repeat: round;
+    background-size: 200px 200px;
+    height: 200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.character-make {
+    padding-bottom: 35px;
+    margin: auto;
+    margin-bottom: 35px;
+    text-align: center;
+    background-image: url("../assets/images/gold_wall.png");
+    outline: goldenrod ridge 8px;
+    width: 60%;
+    color: #2a0037;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.character-make button {
+    background-color: black;
+    color: white;
+    outline: rgb(32, 32, 32) ridge 5px;
+    margin: auto;
+    text-align: center;
+
 }
 
-.App-link {
-  color: #61dafb;
+
+.character-make button.skill-button-up {
+    background-image: url("../assets/images/button_arrow.png");
+    background-size: 75px 75px;
+    width: 75px;
+    height: 75px;
+    background-color: transparent;
+    outline: none;
+    border: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.character-make button.skill-button-down {
+    background-image: url("../assets/images/button_arrow.png");
+    background-size: 75px 75px;
+    transform: rotate(180deg);
+    width: 75px;
+    height: 75px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.character-make p, label {
+    font-size: large;
+    font-weight: bold;
+    width: 95%;
+}
+
+.character-make select {
+    font-size: larger;
+    font-weight: bold;
+    width: 30%;
+}
+
+.newUserFormAll {
+    
+    text-align: center;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: larger;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: rgb(7, 7, 7);
+    text-transform: uppercase;
+    height: fit-content;
+    background-image: url("../assets/images/stone_wall.png");
+    background-size: 100px 100px;
+    outline: dimgray ridge 8px;
+}
+
+.newUserForm input, button {
+    margin-left: 5%;
+    padding: 10px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: medium;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: black;
+    background: white;
+    outline-style: ridge;
+    outline-offset: -5px;
+    outline-width: 5px;
+    outline-color: #6D333D;
+}
+
+.newUserForm button {
+    animation: blinker 3s linear infinite;
+    outline-style: ridge;
+    outline-offset: -5px;
+    outline-width: 5px;
+    outline-color: #6D333D;
+    background-color: #1E1E1E;
+    color: white;
+}
+
+.login-buttons {
+    text-align: center;
+    background-image: url("../assets/images/dark_wood_wall.png");
+}
+
+.login-buttons button {
+    font-size: larger;
+}
+
+
+.header {
+    background-image: url("../assets/images/ruby_ore.gif");
+    margin: auto;
+    height: fit-content;
+    border: 15px ridge #6D333D;
+}
+.header ul * {
+    margin-right: 5%;
+    margin-left: 5%;
+    text-align: center;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #f1f1f1;
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+
+.header h1 {
+    text-align: center;
+    margin: auto;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 45px;
+    letter-spacing: 0px;
+    word-spacing: 6px;
+    color: #f1f1f1;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+    animation: glow .5s infinite alternate;
+}
+
+
+
+.user-display {
+    background-image: url("../assets/images/stone_wall.png");
+    position: relative;
+    background-repeat: round;
+    background-size: 100px 100px;
+    color: black;
+    outline: dimgray ridge 8px;
+    height: 210px;
+    text-align: center;
+    color: rgb(75, 10, 15);
+    padding-bottom: 5px;
+}
+
+.user-display h2 {
+    padding-top: 3px;
+}
+
+.user-display div.links-container {
+    display: block;
+    width: 750px;
+    height: 150px;
+    overflow-x: auto;
+    text-align: center;
+    margin: auto;
+    background-image: url("../assets/images/wood_wall.png");
+    background-repeat: round;
+    background-size: 100px 100px;
+    outline: rgb(83, 42, 0) ridge 8px;
+}
+
+.user-display div.links-container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.character-link {
+    float: left;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    background-image: url("../assets/images/banner-large.png");
+    background-size: cover;
+    text-align: center;
+    color: white;
+    
+}
+
+.character-link.blue-banner{
+    background-image: url("../assets/images/blue-banner-large.png");
+    background-size: cover;
+}
+
+.character-link div {
+    list-style: none;
+}
+.character-link div p {
+    font-size: smaller;
+    
+}
+
+.character-info {
+    color: white;
+    background-image: url("../assets/images/rough-stone.png");
+    background-size: 150px 150px;
+    background-repeat: round;
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    outline: grey ridge 5px;
+    height: 75%;
+    overflow-y: auto;
+}
+
+.character-info button {
+    background-image: url("../assets/images/button-ruby.png");
+    background-color: transparent;
+    background-size: 100px 100px;
+    height: 100px;
+    width: 100px;
+    color: rgb(255, 255, 255);
+    font-size: small;
+    /* outline: #1E1E1E ridge 3px;
+    outline-offset: -3px; */
+    outline: none;
+    border: none;
+    animation: shift 5s linear 2s infinite alternate;
+    margin: auto;
+
+}
+
+.character-info div.inventory p {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+
+.character-info h4 {
+    margin: auto;
+    font-size: large;
+    background-color: #310000;
+    width: 75%;
+    outline: rgb(78, 78, 78) 3px ridge;
+    outline-offset: -3px;
+    padding: 3px;
+}
+
+p.common {
+    color: grey
+}
+
+p.uncommon {
+    color: green;
+}
+
+p.rare {
+    color: rgb(48, 86, 237);
+}
+
+p.super-rare {
+    color: purple;
+}
+
+p.legendery {
+    color: darkorange;
+}
+
+p.unique {
+    color: aquamarine;
+}
+
+div .item-details p {
+    background-color: rgb(57, 57, 57);
+}
+
+.character-info p {
+    background-color: #1E1E1E;
+    outline: rgb(78, 78, 78) 3px ridge;
+    outline-offset: -3px;
+    width: 75%;
+    margin: auto;
+    padding: 3px;
+    text-align: center;
+}
+
+.character-info button {
+    text-align: center;
+    margin: auto;
+}
+
+.battle {
+    background-image: url("../assets/images/black_bricks.png");
+    background-size: 100px 100px;
+    background-repeat: round;
+    background-position: -25px;
+    color: white;
+    
+}
+
+.player-icon {
+    position: absolute;
+    right:0;
+    top: 0;
+    width: 150px;
+    height: 150px;
+    background-image: url("../assets/images/banner.png");
+    background-size: 150px 150px;
+}
+.player-icon img {
+    border-radius: 50%;
+    width: 50px;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    text-align: right;
+    margin: auto;
+    
+}
+
+.blue-banner {
+    background-image: url("../assets/images/blue-banner.png");
+    background-size: 150px 150px;
+}
+
+.player-icon p {
+    font-size: medium;
+    color: white;
+    position: absolute;
+    width: 100px;
+    top: 0;
+    right: 25px;
+}
+
+.player-icon button {
+    color: #000000;
+    font-size: small;
+    height: auto;
+    width: 100px;
+    max-height: 50px;
+    position: absolute;
+    top: 150px;
+    right: 25px;
+    
+}
+
+.dungeon-display {
+    text-align: center;
+    background-image: url("../assets/images/red_brick_wall.png");
+    background-size: 100px 100px;
+    background-repeat: round;
+    outline: #310000 ridge 5px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    
+}
+
+.dungeon-display button {
+    margin: auto;
+    text-align: center;
+}
+
+.dungeon-display h1 {
+    color: white;
+    animation: glow .5s infinite alternate;
+}
+
+.dungeon-room {
+    color: black;
+    width: 75%;
+    text-align: center;
+    margin: auto;
+    background-image: url("../assets/images/stone_wall.png");
+    background-size: 100px 100px;
+    outline: #310000 ridge 2px;
+    outline-offset: -1px;
+}
+
+.dungeon-actual {
+    position: relative;
+}
+
+.dungeon-actual td.player{
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    top: 0;
+    left: 0;
+}
+
+.visited {
+    background-image: url("../assets/images/player.png");
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+}
+
+.unvisited {
+    filter: brightness(50%);
+}
+
+.resource-bar {
+    width: 100%;
+    height: 10px;
+    background-color: red;
+}
+
+.enemy-display {
+    width: 10%;
+}
+
+
+.dungeon-actual {
+    width: 100%;
+}
+
+.dungeon-actual table {
+    text-align: center;
+    margin: auto;
+}
+
+.dungeon-actual td {
+    width: 50px;
+    height: 50px
+}
+
+.dungeon-center {
+    background-image: url("../assets/images/dungeon-center.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dungeon-left {
+    background-image: url("../assets/images/dungeon-side.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dungeon-right {
+    background-image: url("../assets/images/dungeon-side.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(180deg);
+}
+
+.dungeon-bottom {
+    background-image: url("../assets/images/dungeon-side.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(270deg);
+}
+
+.dungeon-top {
+    background-image: url("../assets/images/dungeon-side.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(90deg);
+    
+}
+
+.dungeon-corner-1 {
+    background-image: url("../assets/images/dungeon-corner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dungeon-corner-2 {
+    background-image: url("../assets/images/dungeon-corner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(90deg);
+}
+
+.dungeon-corner-3 {
+    background-image: url("../assets/images/dungeon-corner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(270deg);
+}
+
+.dungeon-corner-4 {
+    background-image: url("../assets/images/dungeon-corner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(180deg);
+}
+
+
+.admin-control {
+    text-align: center;
+    background-image: url("../assets/images/blue-bricks.png");
+    background-size: 100px 100px;
+    margin: auto;
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+}
+
+.admin-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+    
+
+}
+
+.admin-control button {
+    margin: 5px;
+}
+
+.admin-table td {
+    background-image: url("../assets/images/wood_wall.png");
+    max-width: min-content;
+    padding-left: 5px;
+    padding-right: 5px;
+    outline: #310000 ridge 2px;
+    outline-offset: -1px;
+    
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+}
+
+@keyframes grow {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes shift {
+    from {
+        color: white
+    }
+    to {
+        color: black
+    }
+    to {
+        color: white
+    }
+}
+
+.town {
+    background-image: url("../assets/images/dark_wood_wall.png");
+    background-size: 100px 100px;
+    background-repeat: round;
+    border-width: 10%;
+    border-style: ridge;
+    border-color: #623805;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.town td {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    
+}
+
+.grass {
+    background-image: url("../assets/images/grass.png");
+    background-size: 5%;
+}
+
+
+.academy{
+    background-image: url("../assets/images/academy.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.shop {
+    background-image: url("../assets/images/shop.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+}
+
+.dungeon {
+    background-image: url("../assets/images/dungeon.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+}
+.trees {
+    background-image: url("../assets/images/tree.png");
+    margin: auto;
+    background-repeat: space;
+    background-size: 20px 20px;
+}
+
+.roads {
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+
+.roads.up {
+    background-image: url("../assets/images/road_up.png");
+}
+
+
+.roads.right {
+    background-image: url("../assets/images/road_up.png");
+    rotate: 90deg;
+}
+
+.roads.cross {
+    background-image: url("../assets/images/road_cross.png");
+}
+
+.roads.tall {
+    background-image: url("../assets/images/road_long.png");
+}
+
+.roads.wide {
+    background-image: url("../assets/images/road_long.png");
+    rotate: 90deg;
+}
+
+.roads.corner1 {
+    background-image: url("../assets/images/road_corner.png");
+}
+
+.roads.corner2 {
+    background-image: url("../assets/images/road_corner.png");
+    rotate: 90deg;
+}
+
+.roads.corner3 {
+    background-image: url("../assets/images/road_corner.png");
+    rotate: 270deg;
+}
+
+.roads.t1 {
+    background-image: url("../assets/images/road_t.png");
+}
+
+.shop-display {
+    background-image: url("../assets/images/wood_wall.png");
+    background-size: 100px 100px;
+    color: black;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    outline: #623805 ridge 5px;
+    padding-bottom: 4%;
+}
+
+.shop-wall-words {
+    background-image: url("../assets/images/gold_wall.png");
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    outline: #623805 ridge 5px;
+    color:#6D333D;
+}
+
+.shop-list-container {
+    background-image: url("../assets/images/shelf.png");
+    background-size: 25%;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.single {
+    margin: auto;
+    width: 20%;
+    height: 0;
+    padding-bottom: 20%;
+    float: left;
+    color: white;
+}
+
+.item-image-bow {
+    content: url("../assets/images/bow.png");
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    margin: auto;
+}
+
+.shop-display button {
+    color: black;
+
+}
+
+.academy-display {
+    background-image: url("../assets/images/stone_wall.png");
+    background-size: 100px 100px;
+    outline: dimgray ridge 8px;
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+
+@keyframes glow {
+    to {
+        text-shadow: 0 0 10px red;
+    }
 }
