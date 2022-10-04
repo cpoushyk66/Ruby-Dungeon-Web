@@ -73,8 +73,8 @@ class CharacterSerializer < ActiveModel::Serializer
 
   def equiped_items
     self.object.equipment.collect do |e|
-      if e.pocket_id != nil
-        Pocket.find_by(id: e.pocket_id).item
+      if e.item_id != nil
+        Item.find_by(id: e.item_id)
       end
     end
   end
