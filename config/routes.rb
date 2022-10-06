@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   #User Custom Routes
     #Login User and get full info
   get "users/login/:username/:password", to: "users#login"
+    #Get USER template for forms
+  get "template/users", to: "users#template"
     #Give admin power to user given admin is admin
   patch "users/:admin_id/give_admin_access/:user_id", to: "users#give_admin_access"
 
@@ -40,7 +42,8 @@ Rails.application.routes.draw do
    #Makes character buy item with id :id
   get "characters/:id/:shop_action/:item_id", to: "characters#shop"
   patch "characters/:id/level_up", to: "characters#level_up"
-  
+   #Get Character template for forms
+  get "template/characters", to: "characters#template"
   #Enemy Basic CRUD Routes
   get "enemies", to: "enemies#index"
   get "enemies/:id", to: "enemies#show"
@@ -51,6 +54,8 @@ Rails.application.routes.draw do
   #Enemy Custom Routes
     #Get a number of random enmies equal to :num
   get "enemies/random/:num", to: "enemies#random"
+   #Get Enemy template for forms
+  get "template/enemies", to: "enemies#template"
 
   #Item Basic CRUD Routes
   get "items", to: "items#index"
@@ -62,6 +67,8 @@ Rails.application.routes.draw do
   #Item Custom Routes
     #Get a number of random items equal to :num
   get "items/random/:num", to: "items#random"
+   #Get Item template for forms
+  get "template/items", to: "items#template"
 
   #Spell Basic CRUD Routes
   get "spells", to: "spells#index"
@@ -70,9 +77,14 @@ Rails.application.routes.draw do
   patch "spells/:id", to: "spells#update"
   delete "spells/:id", to: "spells#destroy"
 
+   #Get Spell template for forms
+  get "template/spells", to: "spells#template"
+
   #Special Custom Routes
   get "dungeons/generate/:num", to: "dungeons#generate_dungeon"
   get "dungeons/get_leveled_enemies/:amount/:difficulty", to: "dungeons#get_leveled_enemies"
+
+  get "admins/characters/:id", to: "characters#simple_show"
 
 
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }

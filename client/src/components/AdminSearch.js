@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import AdminAddForm from "./AdminAddForm";
 
 function AdminSearch({typeSearch}) {
 
     const [datas, setDatas] = useState(null)
     const [errors, setErrors] = useState([])
+    const [resetBool, setResetBool] = useState(false) 
 
     useEffect(() => {
         fetch(`/${typeSearch}`)
@@ -16,12 +18,15 @@ function AdminSearch({typeSearch}) {
                 setDatas(null)
             }
         })
-    }, [typeSearch])
+    }, [typeSearch, resetBool])
+
+    function refresh() {
+        setResetBool(!resetBool)
+    }
 
     let index = 0
 
-    function makeTable() {
-        console.log(datas)        
+    function makeTable() {     
         return datas.map(data => <tr style={{"fontSize": "medium", "padding": "4px"}} key={index += 1}>{Object.keys(data).map(key => (key == "spells" || key == "items" || key == "equiped_items") ? null : <td key={index += 1} >{(data[key] == true) ? "1" : ((data[key] == false) ? "0" : data[key])}</td>)}</tr>)
     }
 
@@ -39,6 +44,8 @@ function AdminSearch({typeSearch}) {
                     {datas != null && datas.length > 0 ? makeTable() : <tr><td>No {typeSearch}</td></tr>}
                 </tbody>
             </table>
+
+            <AdminAddForm formType={typeSearch} refresh={refresh} />
         </div>
     )
 }

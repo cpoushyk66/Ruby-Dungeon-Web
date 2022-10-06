@@ -126,4 +126,22 @@ class Character < ApplicationRecord
         attack_damage
     end
 
+    def self.template
+        {
+            name: "",
+            title: "",
+            klass: "",
+            level: 1,
+            xp: 1,
+            strength: 1,
+            dexterity: 1,
+            wisdom: 1,
+            constitution: 1,
+            charisma: 1,
+            intelligence: 1,
+            gold: 0,
+            user_id: 0
+        }
+    end
+
 end

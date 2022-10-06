@@ -30,6 +30,10 @@ class SpellsController < ApplicationController
         spell.destroy
         head :no_content
     end
+
+    def template
+        render json: Spell.template, status: :ok
+    end
             
     private
 

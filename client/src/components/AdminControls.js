@@ -4,7 +4,7 @@ import AdminSearch from "./AdminSearch";
 function AdminControls({currentUser}) {
     
     const [adminInfoOn, setAdminInfoOn] = useState(false)
-    const [adminMode, setAdminMode] = useState("users")
+    const [adminMode, setAdminMode] = useState("characters")
 
 
     return (

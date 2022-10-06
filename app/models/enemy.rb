@@ -10,5 +10,22 @@ class Enemy < ApplicationRecord
         Enemy.all.sample(num)
     end
 
+    def self.template
+        {
+            name: "",
+            race: "",
+            klass: "",
+            level: 1,
+            strength: 1,
+            dexterity: 1,
+            wisdom: 1,
+            constitution: 1,
+            charisma: 1,
+            intelligence: 1,
+            rarity: 0,
+            gold: 0
+        }
+    end
+
 
 end
