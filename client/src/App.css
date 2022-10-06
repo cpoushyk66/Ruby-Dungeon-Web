@@ -205,7 +205,7 @@ html *::-webkit-scrollbar {
     overflow-x: auto;
     text-align: center;
     margin: auto;
-    background-image: url("../assets/images/wood_wall.png");
+    background-image: url("../assets/images/rough-stone.png");
     background-repeat: round;
     background-size: 100px 100px;
     outline: rgb(83, 42, 0) ridge 8px;
@@ -557,6 +557,32 @@ div .item-details p {
     outline: #310000 ridge 2px;
     outline-offset: -1px;
     
+}
+
+.admin-form {
+    text-align: center;
+    margin: auto;
+    position: relative;
+}
+
+.admin-form input {
+    text-align: left;
+    margin: auto;
+    padding: 10px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: medium;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: black;
+    background: white;
+    outline-style: ridge;
+    outline-offset: -5px;
+    outline-width: 5px;
+    outline-color: #6D333D;
+}
+
+.admin-form label {
+    text-transform: capitalize; 
 }
 
 @keyframes blinker {

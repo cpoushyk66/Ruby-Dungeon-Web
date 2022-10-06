@@ -22,4 +22,19 @@ class Item < ApplicationRecord
         end
     end
 
+    def self.template
+        {
+            name: "",
+            item_type: "",
+            bonus: 0,
+            bonus_type: "",
+            value: 0,
+            rarity: 0,
+            class_restriction: "",
+            sellable: true,
+            image: "",
+            flavor_text: "",
+        }
+    end
+
 end

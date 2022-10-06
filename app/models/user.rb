@@ -13,4 +13,13 @@ class User < ApplicationRecord
             false
         end
     end
+
+    def self.template
+        {
+            username: "",
+            password: "",
+            image: "",
+            character_tokens: 0
+        }
+    end
 end

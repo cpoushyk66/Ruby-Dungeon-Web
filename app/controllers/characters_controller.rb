@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-    before_action :set_character, only: [:show, :update, :destroy, :shop, :level_up]
+    before_action :set_character, only: [:show, :simple_show, :update, :destroy, :shop, :level_up]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
@@ -11,6 +11,10 @@ class CharactersController < ApplicationController
 
     def show
         render json: @character, status: :ok
+    end
+
+    def simple_show
+        render json: @character, serializer: CharacterSimpleSerializer, status: :ok
     end
 
     def create
@@ -56,6 +60,10 @@ class CharactersController < ApplicationController
         end
     end
 
+    def template
+        render json: Character.template, status: :ok
+    end
+
     private
 
 
@@ -64,7 +72,7 @@ class CharactersController < ApplicationController
     end
 
     def character_params
-        params.permit(:name, :title, :xp, :klass, :strength, :dexterity, :intelligence, :wisdom, :charisma, :constitution, :gold, :user_id)
+        params.permit(:name, :title, :xp, :klass, :strength, :dexterity, :intelligence, :wisdom, :charisma, :level, :constitution, :gold, :user_id)
     end
 
     def render_not_found_response

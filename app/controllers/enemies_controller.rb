@@ -35,6 +35,10 @@ class EnemiesController < ApplicationController
         render json: enemies, status: :ok
     end
 
+    def template
+        render json: Enemy.template, status: :ok
+    end
+
     private
 
     def find_enemy

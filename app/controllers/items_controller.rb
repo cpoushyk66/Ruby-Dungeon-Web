@@ -35,6 +35,10 @@ class ItemsController < ApplicationController
         render json: items, status: :ok
     end
 
+    def template
+        render json: Item.template, status: :ok
+    end
+
     private
 
     def find_item
@@ -42,7 +46,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-        params.permit(:name, :item_type, :bonus, :bonus_type, :value, :rarity, :class_restriction, :sellable, :flavor_text)
+        params.permit(:name, :item_type, :image, :bonus, :bonus_type, :value, :rarity, :class_restriction, :sellable, :flavor_text)
     end
 
     def render_not_found_response

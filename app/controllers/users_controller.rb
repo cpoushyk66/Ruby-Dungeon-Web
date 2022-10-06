@@ -44,6 +44,10 @@ class UsersController < ApplicationController
             render json: {error: "Unauthorized Action!"}, status: :unauthorized
         end
     end
+
+    def template
+        render json: User.template, status: :ok
+    end
     
     private
 
