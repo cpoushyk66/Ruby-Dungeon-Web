@@ -1,7 +1,54 @@
 import React, {useEffect, useState} from "react";
 import ShopItem from "./ShopItem";
+import styled from "styled-components";
 
 function Shop({updateCurrentCharacter, currentCharacter}) {
+
+    const Shop = styled.div`
+    background-image: url("../assets/images/wood_wall.png");
+    background-size: 100px 100px;
+    color: black;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    outline: #623805 ridge 5px;
+    padding-bottom: 10%;
+    `
+
+    const ShopHeader = styled.h1`
+    background-image: url("../assets/images/gold_wall.png");
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    outline: #623805 ridge 5px;
+    color:#6D333D;
+    `
+    const ShopHeader2 = styled.h2`
+    background-image: url("../assets/images/gold_wall.png");
+    margin: auto;
+    padding: 10px;
+    width: 40%;
+    outline: #623805 ridge 5px;
+    outline-offset: -5px;
+    color:#6D333D;
+    `
+    
+    const ItemContainer = styled.div`
+    background-image: url("../assets/images/shelf.png");
+    background-size: 25%;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    `
+
+    const ShopButtons = styled.button`
+    margin: auto;
+    padding: 10px;
+    width: 20%;
+    outline: #623805 ridge 5px;
+    outline-offset: -5px;
+    color:#6D333D;
+    `
 
     const [items, setItems] = useState([])
     const [buyItems, setBuyItems] = useState(true)
@@ -23,18 +70,18 @@ function Shop({updateCurrentCharacter, currentCharacter}) {
 
     return (
 
-        <div className="shop-display">
+        <Shop>
             {currentCharacter != null ? 
                 <div>
-                    <h1 className="shop-wall-words" >Welcome {currentCharacter.name}</h1>
-                    <h3>Would you like to:</h3>
-                    <button onClick={() => setBuyItems(true)} >BUY ITEMS</button>
-                    <button onClick={() => setBuyItems(false)}>SELL IEMS</button>
+                    <ShopHeader>Welcome {currentCharacter.name}</ShopHeader>
+                    <ShopHeader2>Would you like to:</ShopHeader2>
+                    <ShopButtons onClick={() => setBuyItems(true)} >BUY ITEMS</ShopButtons>
+                    <ShopButtons onClick={() => setBuyItems(false)}>SELL IEMS</ShopButtons>
                     
-                    <div className="shop-list-container">{items.length > 0 && currentCharacter != null ? (buyItems ? makeBuyTable() : makeSellTable()) : null}</div>
+                    <ItemContainer>{items.length > 0 && currentCharacter != null ? (buyItems ? makeBuyTable() : makeSellTable()) : null}</ItemContainer>
                 </div>
-            : <h1 style={{"color": "white", "verticalAlign": "middle"}}>Please Log In or Make a Character to View Shop!</h1>}
-        </div>
+            : <ShopHeader>Select a Character to View Shop!</ShopHeader>}
+        </Shop>
     )
 }
 

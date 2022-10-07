@@ -11,8 +11,11 @@ import Academy from "./Academy";
 import LoginForm from "./LoginForm";
 import Dungeon from "./Dungeon";
 import AdminControls from "./AdminControls";
+import {useNavigate} from "react-router-dom"
 
 function App() {
+
+    const navigate = useNavigate();
 
     const [currentUser, setCurrentUser] = useState(null)
     const [userCharacters, setUserCharacters] = useState([])
@@ -50,6 +53,11 @@ function App() {
         }))
 
         setCurrentCharacter(char)
+        fetch(`/characters/${char.id}`, {
+            method: "PATCH",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(char)
+        })
     }
 
     function handleDeleteCharacter(character) {
@@ -77,6 +85,8 @@ function App() {
         setCurrentUser(null)
         setUserCharacters([])
         setCurrentCharacter(null)
+
+        navigate("/home")
     }
 
     function handleAddCharacter(e, character) {
@@ -94,6 +104,7 @@ function App() {
             intelligence: character.intelligence,
             charisma: character.charisma,
             gold: 25,
+            level: 1,
             user_id: currentUser.id
 
         }
@@ -118,7 +129,7 @@ function App() {
 
     return(
         <div className={`App`}>
-            <Navbar/>
+            <Navbar currentUser={currentUser}/>
             {currentUser == null ? <div className="login-buttons newUserForm">
                  <button className="button" onClick={() => setLogin(true)}>Log In</button> 
                 <button className="button" onClick={() => {
@@ -136,7 +147,7 @@ function App() {
                 <Route path="/town" element={<Town/>} />
                 <Route path="shop" element={<Shop updateCurrentCharacter={updateCurrentCharacter} currentCharacter={currentCharacter}/>} />
                 <Route path="/academy" element={<Academy handleAddCharacter={handleAddCharacter} currentUser={currentUser} currentCharacter={currentCharacter} />} />
-                <Route path="/dungeon" element={<Dungeon currentUser={currentUser} currentCharacter={currentCharacter} />} />
+                <Route path="/dungeon" element={<Dungeon currentUser={currentUser} currentCharacter={currentCharacter} updateCurrentCharacter={updateCurrentCharacter}/>} />
                 <Route exact path="/" element={<Home/>} />
                 <Route path="*" element={<Home/>} />
             </Routes>

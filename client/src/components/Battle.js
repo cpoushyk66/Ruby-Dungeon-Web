@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 
-function Battle({handleBattleWon, character, enemies}) {
+function Battle({handleBattleWon, character, updateCurrentCharacter, enemies, difficulty}) {
 
     const [enemyDatas, setEnemyDatas] = useState(null)
-    const [characterData, setCharacterData] = useState(character)
     const [turnWho, setTurnWho] = useState(0)
     useEffect(() => {
-        fetch(`/dungeons/get_leveled_enemies/${enemies}/10`)
+        fetch(`/dungeons/get_leveled_enemies/${enemies}/${difficulty}`)
         .then(res => res.json())
         .then(setEnemyDatas)
     }, [])
 
     function evaluateBattleState() {
 
-        if (characterData.hp_current == 0) {
+        if (character.hp_current == 0) {
             return [false, "lost"]
         }
         else if (enemyDatas.filter(enemy => enemy.hp_current > 0).length === 0) {
@@ -33,37 +32,47 @@ function Battle({handleBattleWon, character, enemies}) {
                     if (enemy.hp_current < 0) {
                         enemy.hp_current = 0
                     }
+
+                    if (enemy.hp_current == 0) {
+                        loot(enemy)
+                    }
                 }
                 return enemy
                 
             })
         })
 
+
         setTurnWho(turnWho + 1)
     }
 
+    function loot(enemy) {
+        let characterM = {...character}
+        characterM.items = [...characterM.items, ...enemy.items]
+        characterM.xp += Math.floor(Math.random() * enemy.level * 10) + enemy.level
+        characterM.gold += enemy.gold
+        console.log(characterM.xp)
+        updateCurrentCharacter(characterM)
+    }
+
     function attackCharacter(attacker) {
-        setCharacterData(() => {
-            let characterD = characterData
-            characterD.hp_current = characterD.hp_current - attacker.attack_damage
-            if (characterD.hp_current < 0) {
-                characterD.hp_current = 0
-            }
-            return characterD
-        })
+        let characterD = character
+        characterD.hp_current = characterD.hp_current - attacker.attack_damage
+        if (characterD.hp_current < 0) {
+            characterD.hp_current = 0
+        }
+        updateCurrentCharacter(characterD)
     }
 
     function heal(target, type) {
 
         if (type == "character") {
-            setCharacterData(() => {
-                let characterD = characterData
-                characterD.hp_current = characterD.hp_current + characterD.spell_damage
-                if (characterD.hp_current > characterD.hp_max) {
-                    characterD.hp_current = characterD.hp_max
-                }
-                return characterD
-            })
+            let characterD = character
+            characterD.hp_current = characterD.hp_current + characterD.spell_damage
+            if (characterD.hp_current > characterD.hp_max) {
+                characterD.hp_current = characterD.hp_max
+            }
+            updateCurrentCharacter(characterD)
         }
         else if (type == "enemy") {
             setEnemyDatas(() => {
@@ -82,6 +91,7 @@ function Battle({handleBattleWon, character, enemies}) {
         }
         
     }
+
 
 
     function showTurn() {
@@ -146,6 +156,7 @@ function Battle({handleBattleWon, character, enemies}) {
                 </div> : <h2>Loading....</h2>}</div>
             {enemyDatas != null && evaluateBattleState()[0] ? showTurn() : null}
             <div>
+            <button onClick={() => heal(character, "character")}>HEAL</button>
             <div className="resource-bar">
                     <div style={{"width": `${character.hp_current / character.hp_max * 100}%`, "backgroundColor": "green", "height": "10px"}} ></div>
                 </div>

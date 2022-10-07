@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from "react";
 import Battle from "./Battle";
 
-function DungeonRoom({character}) {
+function DungeonRoom({character, updateCurrentCharacter}) {
 
     const [dungeon, setDungeon] = useState(null)
     const [position, setPosition] = useState(null)
     const [moves, setMoves] = useState(0)
     const [battle, setBattle] = useState(false)
     const [enemies, setEnemies] = useState(0)
+    const [win, setWin] = useState(false)
+    const [lose, setLose] = useState(false)
+    const [difficulty, setDifficulty] = useState(character.level)
 
     useEffect(() => {
         fetch("/dungeons/generate/10")
@@ -66,16 +69,16 @@ function DungeonRoom({character}) {
     function formatRoom(room) {
         switch (room.room_type) {
             case "empty_room":
-                return <td className={`empty_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
+                return <td key={index += 1} className={`empty_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
                 break
             case "enemy_room":
-                return <td className={`enemy_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
+                return <td key={index += 1} className={`enemy_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
                 break
             case "item_room":
-                return <td className={`item_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
+                return <td key={index += 1} className={`item_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
                 break
             case "boss_room":
-                return <td className={`boss_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
+                return <td key={index += 1} className={`boss_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
                 break
         }
 
@@ -118,34 +121,16 @@ function DungeonRoom({character}) {
                 <tbody>
                     {dungeon != null ? makeDungeon() : null}
                 </tbody>
-            </table> : <Battle handleBattleWon={handleBattleWon} character={character} enemies={enemies != null ? enemies : []} />}
+            </table> : <Battle handleBattleWon={handleBattleWon} character={character} enemies={enemies != null ? enemies : []}  updateCurrentCharacter={updateCurrentCharacter} difficulty={difficulty}/>}
 
-            
-            <button onClick={() => movePlayer([0, 0], dungeon)}>Move to Origin</button>
-            <button onClick={() => movePlayer([position[0], position[1] + 1], dungeon)}>Move Right</button>
-            <button onClick={() => movePlayer([position[0], position[1] - 1], dungeon)}>Move Left</button>
-            <button onClick={() => movePlayer([position[0] + 1, position[1]], dungeon)}>Move Down</button>
-            <button onClick={() => movePlayer([position[0] - 1, position[1]], dungeon)}>Move Up</button>
+            {!battle ? <div>
+                <button onClick={() => movePlayer([0, 0], dungeon)}>Move to Origin</button>
+                <button onClick={() => movePlayer([position[0], position[1] + 1], dungeon)}>Move Right</button>
+                <button onClick={() => movePlayer([position[0], position[1] - 1], dungeon)}>Move Left</button>
+                <button onClick={() => movePlayer([position[0] + 1, position[1]], dungeon)}>Move Down</button>
+                <button onClick={() => movePlayer([position[0] - 1, position[1]], dungeon)}>Move Up</button>
+            </div> : null}
         </div>
     )
 }
     export default DungeonRoom
- 
- 
-    // <div className="dungeon-room">
-    //     {enemy.hp_max != undefined ? <div>
-
-    //         <h2>Enemy: {enemy.name} the {enemy.race}</h2>
-    //         <h3>Level: {enemy.level}</h3>
-    //         <h3>Health: {enemy.hp_current} / {enemy.hp_max}</h3>
-    //         <h3>Mana: {enemy.mp_current} / {enemy.mp_max}</h3>
-    //         <h3>Strength: {enemy.strength}</h3>
-    //         <h3>Dexterity: {enemy.dexterity}</h3>
-    //         <h3>Intelligence: {enemy.intelligence}</h3>
-    //         <h3>Wisdom: {enemy.wisdom}</h3>
-    //         <h3>Constitution: {enemy.constitution}</h3>
-    //         <h3>Charisma: {enemy.charisma}</h3>
-    //         <div className="enemy-icon"></div>
-    //     </div> : <p>Loading</p>}
-    // </div>
-    // )
