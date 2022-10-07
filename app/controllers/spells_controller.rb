@@ -1,5 +1,6 @@
 class SpellsController < ApplicationController
 
+    before_action :set_spell, only: [:show, :patch_show, :update, :destroy]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
@@ -9,9 +10,12 @@ class SpellsController < ApplicationController
     end
 
     def show
-        spell = find_spell
-        render json: spell, status: :ok
+        render json: @spell, status: :ok
 
+    end
+
+    def patch_show
+        render json: @spell, serializer: SpellSimpleSerializer, status: :ok
     end
 
     def create
@@ -20,14 +24,12 @@ class SpellsController < ApplicationController
     end
 
     def update
-        spell = find_spell
-        spell.update!(spell_params)
-        render json: spell, status: :accepted
+        @spell.update!(spell_params)
+        render json: @spell, status: :accepted
     end
 
     def destroy
-        spell = find_spell
-        spell.destroy
+        @spell.destroy
         head :no_content
     end
 
@@ -38,7 +40,7 @@ class SpellsController < ApplicationController
     private
 
     def find_spell
-        Spell.find(params[:id])
+        @spell = Spell.find(params[:id])
     end
 
     def spell_params

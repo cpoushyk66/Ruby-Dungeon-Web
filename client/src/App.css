@@ -140,47 +140,6 @@ html *::-webkit-scrollbar {
     font-size: larger;
 }
 
-
-.header {
-    background-image: url("../assets/images/ruby_ore.gif");
-    margin: auto;
-    height: fit-content;
-    border: 15px ridge #6D333D;
-}
-.header ul * {
-    margin-right: 5%;
-    margin-left: 5%;
-    text-align: center;
-    font-family: Impact, Charcoal, sans-serif;
-    font-size: 25px;
-    letter-spacing: 2px;
-    word-spacing: 2px;
-    color: #f1f1f1;
-    font-weight: 400;
-    text-decoration: none solid rgb(68, 68, 68);
-    font-style: normal;
-    font-variant: normal;
-    text-transform: uppercase;
-}
-
-.header h1 {
-    text-align: center;
-    margin: auto;
-    font-family: Impact, Charcoal, sans-serif;
-    font-size: 45px;
-    letter-spacing: 0px;
-    word-spacing: 6px;
-    color: #f1f1f1;
-    font-weight: 400;
-    text-decoration: none;
-    font-style: normal;
-    font-variant: normal;
-    text-transform: uppercase;
-    animation: glow .5s infinite alternate;
-}
-
-
-
 .user-display {
     background-image: url("../assets/images/stone_wall.png");
     position: relative;
@@ -713,55 +672,6 @@ div .item-details p {
     background-image: url("../assets/images/road_t.png");
 }
 
-.shop-display {
-    background-image: url("../assets/images/wood_wall.png");
-    background-size: 100px 100px;
-    color: black;
-    text-align: center;
-    margin: auto;
-    margin-top: 10px;
-    outline: #623805 ridge 5px;
-    padding-bottom: 4%;
-}
-
-.shop-wall-words {
-    background-image: url("../assets/images/gold_wall.png");
-    margin: auto;
-    padding: 10px;
-    width: 50%;
-    outline: #623805 ridge 5px;
-    color:#6D333D;
-}
-
-.shop-list-container {
-    background-image: url("../assets/images/shelf.png");
-    background-size: 25%;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: auto;
-}
-
-.single {
-    margin: auto;
-    width: 20%;
-    height: 0;
-    padding-bottom: 20%;
-    float: left;
-    color: white;
-}
-
-.item-image-bow {
-    content: url("../assets/images/bow.png");
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    margin: auto;
-}
-
-.shop-display button {
-    color: black;
-
-}
 
 .academy-display {
     background-image: url("../assets/images/stone_wall.png");

@@ -1,16 +1,19 @@
 class EnemiesController < ApplicationController
 
+    before_action :set_enemy, only: [:show, :patch_show, :update, :destroy]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     def index
-        enemies = Enemy.all
-        render json: enemies, status: :ok
+        render json: Enemy.all, status: :ok
     end
 
     def show
-        enemy = find_enemy
-        render json: enemy, status: :ok
+        render json: @enemy, status: :ok
+    end
+
+    def patch_show
+        render json: @enemy, serializer: EnemySimpleSerializer, status: :ok
     end
 
     def create
@@ -19,14 +22,12 @@ class EnemiesController < ApplicationController
     end
 
     def update
-        enemy = find_enemy
-        enemy.update!(enemy_params)
-        render json: enemy, status: :accepted
+        @enemy.update!(enemy_params)
+        render json: @enemy, status: :accepted
     end
 
     def destroy
-        enemy = find_enemy
-        enemy.destroy
+        @enemy.destroy
         head :no_content
     end
 
@@ -41,8 +42,8 @@ class EnemiesController < ApplicationController
 
     private
 
-    def find_enemy
-        Enemy.find(params[:id])
+    def set_enemy
+        @enemy = Enemy.find(params[:id])
     end
 
     def enemy_params

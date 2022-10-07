@@ -84,7 +84,11 @@ Rails.application.routes.draw do
   get "dungeons/generate/:num", to: "dungeons#generate_dungeon"
   get "dungeons/get_leveled_enemies/:amount/:difficulty", to: "dungeons#get_leveled_enemies"
 
-  get "admins/characters/:id", to: "characters#simple_show"
+  get "admins/characters/:id", to: "characters#patch_show"
+  get "admins/users/:id", to: "users#patch_show"
+  get "admins/enemies/:id", to: "enemies#patch_show"
+  get "admins/items/:id", to: "items#patch_show"
+  get "admins/spells/:id", to: "spells#patch_show"
 
 
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }

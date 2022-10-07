@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-    before_action :set_character, only: [:show, :simple_show, :update, :destroy, :shop, :level_up]
+    before_action :set_character, only: [:show, :patch_show, :update, :destroy, :shop, :level_up]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
@@ -13,7 +13,7 @@ class CharactersController < ApplicationController
         render json: @character, status: :ok
     end
 
-    def simple_show
+    def patch_show
         render json: @character, serializer: CharacterSimpleSerializer, status: :ok
     end
 

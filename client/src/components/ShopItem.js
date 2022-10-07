@@ -1,6 +1,36 @@
 import React from "react";
+import styled from "styled-components";
 
 function ShopItem({updateCurrentCharacter, character, buying, item}) {
+
+    const Wrapper = styled.div`
+    margin: auto;
+    width: 20%;
+    height: 0;
+    padding-bottom: 20%;
+    float: left;
+    color: white;
+    
+    background-image: url("../assets/images/shop_item_background.png");
+    background-size: contain;
+    overflow-y: auto;
+
+    > p {
+        color: black;
+        padding: 5px;
+    }
+    `
+
+    const ItemImage = styled.div`
+    content: url("${item.image}");
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    margin: auto;
+    `
+
+    const Item = styled.div`
+    `
 
     function handleBuy(e) {
         e.preventDefault()
@@ -43,13 +73,14 @@ function ShopItem({updateCurrentCharacter, character, buying, item}) {
     }
 
     return (
-        <div className="single" >
+        <Wrapper>
             <p>{item.name}</p>
-            <div className={`item-image-${item.image}`}></div>
+            <ItemImage></ItemImage>
             <p>{item.flavor_text}</p>
             <p>Cost {calcPrice()} gold!</p>
+            <p>Used by: {item.class_restriction}</p>
             {buying ? <button onClick={handleBuy}>Buy</button> : <button onClick={handleSell} >{item.sellable ? "Sell" : "Unsellable"}</button>}
-        </div>
+        </Wrapper>
     )
 }
 

@@ -1,16 +1,19 @@
 class ItemsController < ApplicationController
 
+    before_action :set_item, only: [:show, :patch_show, :update, :destroy]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     def index
-        items = Item.all
-        render json: items, status: :ok
+        render json: Item.all, status: :ok
     end
 
     def show
-        item = find_item
-        render json: item, status: :ok
+        render json: @item, status: :ok
+    end
+
+    def patch_show
+        render json: @item, serializer: ItemSimpleSerializer, status: :ok
     end
 
     def create
@@ -19,14 +22,12 @@ class ItemsController < ApplicationController
     end
 
     def update
-        item = find_item
-        item.update!(item_params)
-        render json: item, status: :accepted
+        @item.update!(item_params)
+        render json: @item, status: :accepted
     end
 
     def destroy
-        item = find_item
-        item.destroy
+        @item.destroy
         head :no_content
     end
 
@@ -42,7 +43,7 @@ class ItemsController < ApplicationController
     private
 
     def find_item
-        Item.find(params[:id])
+        @item = Item.find(params[:id])
     end
 
     def item_params

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import DungeonRoom from "./DungeonRoom";
 
-function Dungeon({currentUser, currentCharacter}) {
+function Dungeon({currentUser, currentCharacter, updateCurrentCharacter}) {
 
     const [entered, setEntered] = useState(false)
 
@@ -12,7 +12,7 @@ function Dungeon({currentUser, currentCharacter}) {
 
             <button onClick={() => setEntered(!entered)} >{entered ? "Leave?" : "Enter?"}</button>
 
-            {entered ? <DungeonRoom character={currentCharacter}/>
+            {entered ? <DungeonRoom character={currentCharacter} updateCurrentCharacter={updateCurrentCharacter}/>
             : null}
         </div>) : <h1>Make a character to enter the dungeon!</h1>) : 
         <h1>Please Log In to See Dungeon!</h1>}

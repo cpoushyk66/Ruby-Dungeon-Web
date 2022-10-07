@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
+    before_action :set_user, only: [:patch_show, :update, :destroy]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     def index
-        users = User.all
-        render json: users, status: :ok
+        render json: User.all, status: :ok
     end
 
     def show
@@ -17,6 +17,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def patch_show
+        render json: @user, serializer: UserSimpleSerializer, status: :ok
+    end
+
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id
@@ -24,14 +28,12 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = find_user
-        user.update!(user_params)
-        render json: user, status: :accepted
+        @user.update!(user_params)
+        render json: @user, status: :accepted
     end
 
     def destroy
-        user = find_user
-        user.destroy
+        @user.destroy
         head :no_content
     end
 
@@ -51,8 +53,8 @@ class UsersController < ApplicationController
     
     private
 
-    def find_user
-        User.find(params[:id])
+    def set_user
+        @user = User.find(params[:id])
     end
 
     def user_params

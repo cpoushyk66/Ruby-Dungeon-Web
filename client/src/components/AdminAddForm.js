@@ -13,7 +13,7 @@ function AdminAddForm({formType, refresh}) {
                 response = `/template/${formType}`
                 break
             case "PATCH":
-                response = `admins/characters/${selectId}`
+                response = `admins/${formType}/${selectId}`
                 break
         }
         fetch(response)
