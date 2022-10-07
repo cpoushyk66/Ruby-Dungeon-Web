@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 function ShopItem({updateCurrentCharacter, character, buying, item}) {
 
-    const Wrapper = styled.div`
+    const Item = styled.div`
     margin: auto;
     width: 20%;
     height: 0;
@@ -29,7 +29,11 @@ function ShopItem({updateCurrentCharacter, character, buying, item}) {
     margin: auto;
     `
 
-    const Item = styled.div`
+    const ItemButton = styled.button`
+    
+    &:hover {
+        background: grey;
+    }
     `
 
     function handleBuy(e) {
@@ -73,14 +77,14 @@ function ShopItem({updateCurrentCharacter, character, buying, item}) {
     }
 
     return (
-        <Wrapper>
+        <Item>
             <p>{item.name}</p>
             <ItemImage></ItemImage>
             <p>{item.flavor_text}</p>
             <p>Cost {calcPrice()} gold!</p>
             <p>Used by: {item.class_restriction}</p>
-            {buying ? <button onClick={handleBuy}>Buy</button> : <button onClick={handleSell} >{item.sellable ? "Sell" : "Unsellable"}</button>}
-        </Wrapper>
+            {buying ? <ItemButton onClick={handleBuy}>Buy</ItemButton> : <ItemButton onClick={handleSell} >{item.sellable ? "Sell" : "Unsellable"}</ItemButton>}
+        </Item>
     )
 }
 
