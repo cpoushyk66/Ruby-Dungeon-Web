@@ -3,7 +3,7 @@ html, body {
     margin: 0px;
     font-family: 'Ultra', serif;
     color: black;
-    background-image: url("../assets/images/background_ore.gif");
+    background-image: url("../public/assets/images/background_ore.gif");
     height: 100%;
     overflow-y: auto;
     
