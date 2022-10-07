@@ -39,7 +39,7 @@ class SpellsController < ApplicationController
             
     private
 
-    def find_spell
+    def set_spell
         @spell = Spell.find(params[:id])
     end
 

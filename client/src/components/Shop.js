@@ -48,6 +48,10 @@ function Shop({updateCurrentCharacter, currentCharacter}) {
     outline: #623805 ridge 5px;
     outline-offset: -5px;
     color:#6D333D;
+
+    &:hover {
+        background: grey;
+    }
     `
 
     const [items, setItems] = useState([])
