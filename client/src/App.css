@@ -29,7 +29,7 @@ html *::-webkit-scrollbar {
 .home {
     text-align: center;
     color: white;
-    background-image: url("../assets/images/ruby.gif");
+    background-image: url("../public/assets/images/ruby.gif");
     background-repeat: round;
     background-size: 200px 200px;
     height: 200px;
@@ -40,7 +40,7 @@ html *::-webkit-scrollbar {
     margin: auto;
     margin-bottom: 35px;
     text-align: center;
-    background-image: url("../assets/images/gold_wall.png");
+    background-image: url("../public/assets/images/gold_wall.png");
     outline: goldenrod ridge 8px;
     width: 60%;
     color: #2a0037;
@@ -57,7 +57,7 @@ html *::-webkit-scrollbar {
 
 
 .character-make button.skill-button-up {
-    background-image: url("../assets/images/button_arrow.png");
+    background-image: url("../public/assets/images/button_arrow.png");
     background-size: 75px 75px;
     width: 75px;
     height: 75px;
@@ -69,7 +69,7 @@ html *::-webkit-scrollbar {
 
 
 .character-make button.skill-button-down {
-    background-image: url("../assets/images/button_arrow.png");
+    background-image: url("../public/assets/images/button_arrow.png");
     background-size: 75px 75px;
     transform: rotate(180deg);
     width: 75px;
@@ -101,7 +101,7 @@ html *::-webkit-scrollbar {
     color: rgb(7, 7, 7);
     text-transform: uppercase;
     height: fit-content;
-    background-image: url("../assets/images/stone_wall.png");
+    background-image: url("../public/assets/images/stone_wall.png");
     background-size: 100px 100px;
     outline: dimgray ridge 8px;
 }
@@ -133,7 +133,7 @@ html *::-webkit-scrollbar {
 
 .login-buttons {
     text-align: center;
-    background-image: url("../assets/images/dark_wood_wall.png");
+    background-image: url("../public/assets/images/dark_wood_wall.png");
 }
 
 .login-buttons button {
@@ -141,7 +141,7 @@ html *::-webkit-scrollbar {
 }
 
 .user-display {
-    background-image: url("../assets/images/stone_wall.png");
+    background-image: url("../public/assets/images/stone_wall.png");
     position: relative;
     background-repeat: round;
     background-size: 100px 100px;
@@ -164,7 +164,7 @@ html *::-webkit-scrollbar {
     overflow-x: auto;
     text-align: center;
     margin: auto;
-    background-image: url("../assets/images/rough-stone.png");
+    background-image: url("../public/assets/images/rough-stone.png");
     background-repeat: round;
     background-size: 100px 100px;
     outline: rgb(83, 42, 0) ridge 8px;
@@ -179,7 +179,7 @@ html *::-webkit-scrollbar {
     margin: auto;
     width: 150px;
     height: 150px;
-    background-image: url("../assets/images/banner-large.png");
+    background-image: url("../public/assets/images/banner-large.png");
     background-size: cover;
     text-align: center;
     color: white;
@@ -187,7 +187,7 @@ html *::-webkit-scrollbar {
 }
 
 .character-link.blue-banner{
-    background-image: url("../assets/images/blue-banner-large.png");
+    background-image: url("../public/assets/images/blue-banner-large.png");
     background-size: cover;
 }
 
@@ -201,7 +201,7 @@ html *::-webkit-scrollbar {
 
 .character-info {
     color: white;
-    background-image: url("../assets/images/rough-stone.png");
+    background-image: url("../public/assets/images/rough-stone.png");
     background-size: 150px 150px;
     background-repeat: round;
     width: 60%;
@@ -213,7 +213,7 @@ html *::-webkit-scrollbar {
 }
 
 .character-info button {
-    background-image: url("../assets/images/button-ruby.png");
+    background-image: url("../public/assets/images/button-ruby.png");
     background-color: transparent;
     background-size: 100px 100px;
     height: 100px;
@@ -289,7 +289,7 @@ div .item-details p {
 }
 
 .battle {
-    background-image: url("../assets/images/black_bricks.png");
+    background-image: url("../public/assets/images/black_bricks.png");
     background-size: 100px 100px;
     background-repeat: round;
     background-position: -25px;
@@ -303,7 +303,7 @@ div .item-details p {
     top: 0;
     width: 150px;
     height: 150px;
-    background-image: url("../assets/images/banner.png");
+    background-image: url("../public/assets/images/banner.png");
     background-size: 150px 150px;
 }
 .player-icon img {
@@ -318,7 +318,7 @@ div .item-details p {
 }
 
 .blue-banner {
-    background-image: url("../assets/images/blue-banner.png");
+    background-image: url("../public/assets/images/blue-banner.png");
     background-size: 150px 150px;
 }
 
@@ -345,7 +345,7 @@ div .item-details p {
 
 .dungeon-display {
     text-align: center;
-    background-image: url("../assets/images/red_brick_wall.png");
+    background-image: url("../public/assets/images/red_brick_wall.png");
     background-size: 100px 100px;
     background-repeat: round;
     outline: #310000 ridge 5px;
@@ -369,7 +369,7 @@ div .item-details p {
     width: 75%;
     text-align: center;
     margin: auto;
-    background-image: url("../assets/images/stone_wall.png");
+    background-image: url("../public/assets/images/stone_wall.png");
     background-size: 100px 100px;
     outline: #310000 ridge 2px;
     outline-offset: -1px;
@@ -388,7 +388,7 @@ div .item-details p {
 }
 
 .visited {
-    background-image: url("../assets/images/player.png");
+    background-image: url("../public/assets/images/player.png");
     background-size: 50px 50px;
     background-repeat: no-repeat;
 }
@@ -423,33 +423,33 @@ div .item-details p {
 }
 
 .dungeon-center {
-    background-image: url("../assets/images/dungeon-center.png");
+    background-image: url("../public/assets/images/dungeon-center.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .dungeon-left {
-    background-image: url("../assets/images/dungeon-side.png");
+    background-image: url("../public/assets/images/dungeon-side.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .dungeon-right {
-    background-image: url("../assets/images/dungeon-side.png");
+    background-image: url("../public/assets/images/dungeon-side.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(180deg);
 }
 
 .dungeon-bottom {
-    background-image: url("../assets/images/dungeon-side.png");
+    background-image: url("../public/assets/images/dungeon-side.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(270deg);
 }
 
 .dungeon-top {
-    background-image: url("../assets/images/dungeon-side.png");
+    background-image: url("../public/assets/images/dungeon-side.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(90deg);
@@ -457,27 +457,27 @@ div .item-details p {
 }
 
 .dungeon-corner-1 {
-    background-image: url("../assets/images/dungeon-corner.png");
+    background-image: url("../public/assets/images/dungeon-corner.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .dungeon-corner-2 {
-    background-image: url("../assets/images/dungeon-corner.png");
+    background-image: url("../public/assets/images/dungeon-corner.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(90deg);
 }
 
 .dungeon-corner-3 {
-    background-image: url("../assets/images/dungeon-corner.png");
+    background-image: url("../public/assets/images/dungeon-corner.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(270deg);
 }
 
 .dungeon-corner-4 {
-    background-image: url("../assets/images/dungeon-corner.png");
+    background-image: url("../public/assets/images/dungeon-corner.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(180deg);
@@ -486,7 +486,7 @@ div .item-details p {
 
 .admin-control {
     text-align: center;
-    background-image: url("../assets/images/blue-bricks.png");
+    background-image: url("../public/assets/images/blue-bricks.png");
     background-size: 100px 100px;
     margin: auto;
     text-align: center;
@@ -509,7 +509,7 @@ div .item-details p {
 }
 
 .admin-table td {
-    background-image: url("../assets/images/wood_wall.png");
+    background-image: url("../public/assets/images/wood_wall.png");
     max-width: min-content;
     padding-left: 5px;
     padding-right: 5px;
@@ -572,7 +572,7 @@ div .item-details p {
 }
 
 .town {
-    background-image: url("../assets/images/dark_wood_wall.png");
+    background-image: url("../public/assets/images/dark_wood_wall.png");
     background-size: 100px 100px;
     background-repeat: round;
     border-width: 10%;
@@ -595,32 +595,32 @@ div .item-details p {
 }
 
 .grass {
-    background-image: url("../assets/images/grass.png");
+    background-image: url("../public/assets/images/grass.png");
     background-size: 5%;
 }
 
 
 .academy{
-    background-image: url("../assets/images/academy.png");
+    background-image: url("../public/assets/images/academy.png");
     background-repeat: no-repeat;
     background-size: contain;
 }
 
 .shop {
-    background-image: url("../assets/images/shop.gif");
+    background-image: url("../public/assets/images/shop.gif");
     background-repeat: no-repeat;
     background-size: contain;
     
 }
 
 .dungeon {
-    background-image: url("../assets/images/dungeon.gif");
+    background-image: url("../public/assets/images/dungeon.gif");
     background-repeat: no-repeat;
     background-size: contain;
     
 }
 .trees {
-    background-image: url("../assets/images/tree.png");
+    background-image: url("../public/assets/images/tree.png");
     margin: auto;
     background-repeat: space;
     background-size: 20px 20px;
@@ -632,49 +632,49 @@ div .item-details p {
 }
 
 .roads.up {
-    background-image: url("../assets/images/road_up.png");
+    background-image: url("../public/assets/images/road_up.png");
 }
 
 
 .roads.right {
-    background-image: url("../assets/images/road_up.png");
+    background-image: url("../public/assets/images/road_up.png");
     rotate: 90deg;
 }
 
 .roads.cross {
-    background-image: url("../assets/images/road_cross.png");
+    background-image: url("../public/assets/images/road_cross.png");
 }
 
 .roads.tall {
-    background-image: url("../assets/images/road_long.png");
+    background-image: url("../public/assets/images/road_long.png");
 }
 
 .roads.wide {
-    background-image: url("../assets/images/road_long.png");
+    background-image: url("../public/assets/images/road_long.png");
     rotate: 90deg;
 }
 
 .roads.corner1 {
-    background-image: url("../assets/images/road_corner.png");
+    background-image: url("../public/assets/images/road_corner.png");
 }
 
 .roads.corner2 {
-    background-image: url("../assets/images/road_corner.png");
+    background-image: url("../public/assets/images/road_corner.png");
     rotate: 90deg;
 }
 
 .roads.corner3 {
-    background-image: url("../assets/images/road_corner.png");
+    background-image: url("../public/assets/images/road_corner.png");
     rotate: 270deg;
 }
 
 .roads.t1 {
-    background-image: url("../assets/images/road_t.png");
+    background-image: url("../public/assets/images/road_t.png");
 }
 
 
 .academy-display {
-    background-image: url("../assets/images/stone_wall.png");
+    background-image: url("../public/assets/images/stone_wall.png");
     background-size: 100px 100px;
     outline: dimgray ridge 8px;
     text-align: center;
