@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-    before_action :set_character, only: [:show, :patch_show, :update, :destroy, :shop, :level_up]
+    before_action :set_character, only: [:show, :patch_show, :shop, :update, :destroy, :shop, :level_up]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
@@ -39,7 +39,7 @@ class CharactersController < ApplicationController
     
     def shop
         item = Item.find_by(id: params[:item_id])
-
+        
         if (params[:shop_action] == "buy")
             @character.buy_item(item)
             render json: @character, staus: :accepted
