@@ -125,7 +125,8 @@ function Battle({handleBattleWon, character, updateCurrentCharacter, enemies, di
     function formatEnemies()  {
         return enemyDatas.map(enemy => {
         return <div className="enemy-display">
-            <p>{enemy.name} the {enemy.race}</p>
+            <p>{enemy.name}</p>
+            <p>{enemy.race} {enemy.klass}</p>
             <p>Level: {enemy.level}</p>
 
             {enemy.hp_current > 0 ? 

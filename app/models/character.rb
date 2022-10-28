@@ -33,8 +33,8 @@ class Character < ApplicationRecord
     end
 
     def sell_item(item)
-        pocket = Pocket.find_by(item_id: item.id, holder: self)
-        if (pocket)
+        pocket = self.pockets.find_by(item_id: item.id)
+        if (pocket && item.sellable)
             pocket.destroy
             self.update(gold: self.gold + item.value)
             true
