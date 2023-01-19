@@ -124,11 +124,10 @@ function DungeonRoom({character, updateCurrentCharacter}) {
             </table> : <Battle handleBattleWon={handleBattleWon} character={character} enemies={enemies != null ? enemies : []}  updateCurrentCharacter={updateCurrentCharacter} difficulty={difficulty}/>}
 
             {!battle ? <div>
-                <button onClick={() => movePlayer([0, 0], dungeon)}>Move to Origin</button>
-                <button onClick={() => movePlayer([position[0], position[1] + 1], dungeon)}>Move Right</button>
-                <button onClick={() => movePlayer([position[0], position[1] - 1], dungeon)}>Move Left</button>
-                <button onClick={() => movePlayer([position[0] + 1, position[1]], dungeon)}>Move Down</button>
-                <button onClick={() => movePlayer([position[0] - 1, position[1]], dungeon)}>Move Up</button>
+                <button onClick={() => movePlayer([position[0], position[1] + 1], dungeon)}>→</button>
+                <button onClick={() => movePlayer([position[0], position[1] - 1], dungeon)}>←</button>
+                <button onClick={() => movePlayer([position[0] + 1, position[1]], dungeon)}>↓</button>
+                <button onClick={() => movePlayer([position[0] - 1, position[1]], dungeon)}>↑</button>
             </div> : null}
         </div>
     )
