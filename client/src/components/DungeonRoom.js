@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react";
+import { DungeonBottom, DungeonCenter, DungeonContainer, DungeonCornerBottomLeft, DungeonCornerBottomRight, DungeonCornerTopLeft, DungeonCornerTopRight, DungeonLeft, DungeonRight, DungeonTop, PlayerSpace } from "../styles/DungeonTileManager";
 import Battle from "./Battle";
 
 function DungeonRoom({character, updateCurrentCharacter}) {
 
     const [dungeon, setDungeon] = useState(null)
-    const [position, setPosition] = useState(null)
+    const [position, setPosition] = useState([0, 0])
+    const [rotation, setRotation] = useState(0)
     const [moves, setMoves] = useState(0)
     const [battle, setBattle] = useState(false)
     const [enemies, setEnemies] = useState(0)
@@ -39,10 +41,24 @@ function DungeonRoom({character, updateCurrentCharacter}) {
 
     let index = 0
     function makeDungeon() {
-       return dungeon.dungeon.map(row => <tr key={index += 1} >{row.map(tile => formatRoom(tile))}</tr>)
+       return dungeon.dungeon.map(row => <tr key={index += 1} >{row.map(tile => determineCell(tile.coords, Math.sqrt(dungeon.rooms)))}</tr>)
     }
 
     function movePlayer(newCoords, dungeon) {
+        setRotation(() => {
+            if (newCoords[0] > position[0]) {
+                return 180
+            }
+            else if (newCoords[0] < position[0]) {
+                return 0
+            }
+            else if (newCoords[1] < position[1]) {
+                return 270
+            }
+            else if (newCoords[1] > position[1]) {
+                return 90
+            }
+        })
         setPosition([clamp(newCoords[0], 0, Math.sqrt(dungeon.rooms) - 1), clamp(newCoords[1], 0, Math.sqrt(dungeon.rooms) - 1)])
         setDungeon(() => {
             let tempDung = {...dungeon};
@@ -66,49 +82,32 @@ function DungeonRoom({character, updateCurrentCharacter}) {
         setMoves(moves + 1)
     }
 
-    function formatRoom(room) {
-        switch (room.room_type) {
-            case "empty_room":
-                return <td key={index += 1} className={`empty_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
-                break
-            case "enemy_room":
-                return <td key={index += 1} className={`enemy_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
-                break
-            case "item_room":
-                return <td key={index += 1} className={`item_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
-                break
-            case "boss_room":
-                return <td key={index += 1} className={`boss_room ${setTileClass(room.coords, Math.sqrt(dungeon.rooms))} ${room.visited ? "visited" : "unvisited"}`}></td>
-                break
-        }
-
-    }
-
-    function setTileClass(coords, sideLength) {
+    function determineCell(coords, sideLength) {
         if (coords[0] == 0 && coords[1] == 0) {
-            return "dungeon-corner-1"
+            return <DungeonCornerTopLeft visited={dungeon.dungeon[coords[0]][coords[1]].visited} >{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation} /> : null}</DungeonCornerTopLeft>
         }
         else if (coords[0] == 0 && coords[1] == sideLength - 1)
-            return "dungeon-corner-2"
+            return <DungeonCornerTopRight visited={dungeon.dungeon[coords[0]][coords[1]].visited}>{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation}/> : null}</DungeonCornerTopRight>
         else if (coords[0] == 0 && coords[1] != 0 && coords[1] != sideLength - 1)
-            return "dungeon-top"
+            return <DungeonTop visited={dungeon.dungeon[coords[0]][coords[1]].visited}>{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation} /> : null}</DungeonTop>
         else if (coords[0] == sideLength - 1 && coords[1] == 0)
-            return "dungeon-corner-3"
+            return <DungeonCornerBottomRight visited={dungeon.dungeon[coords[0]][coords[1]].visited}>{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation} /> : null}</DungeonCornerBottomRight>
         else if (coords[0] == sideLength - 1 && coords[1] == sideLength - 1)
-            return "dungeon-corner-4"
+            return <DungeonCornerBottomLeft visited={dungeon.dungeon[coords[0]][coords[1]].visited}>{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation} /> : null}</DungeonCornerBottomLeft>
         else if (coords[0] == sideLength - 1)
-            return "dungeon-bottom"
+            return <DungeonBottom visited={dungeon.dungeon[coords[0]][coords[1]].visited}>{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation} /> : null}</DungeonBottom>
         else if (coords[1] == 0)
-            return "dungeon-left"
+            return <DungeonLeft visited={dungeon.dungeon[coords[0]][coords[1]].visited}>{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation} /> : null}</DungeonLeft>
         else if (coords[1] == sideLength - 1)
-            return "dungeon-right"
+            return <DungeonRight visited={dungeon.dungeon[coords[0]][coords[1]].visited}>{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation} /> : null}</DungeonRight>
         else 
-            return "dungeon-center"
+            return <DungeonCenter visited={dungeon.dungeon[coords[0]][coords[1]].visited}>{coords[0] == position[0] && coords[1] == position[1] ? <PlayerSpace rotatePlayer={rotation} /> : null}</DungeonCenter>
     }
 
     return(
         <div className="dungeon-actual">
-            {!battle && dungeon != null ? <table cellPadding={0} cellSpacing={0}>
+            {!battle && dungeon != null ? 
+            <DungeonContainer cellPadding={0} cellSpacing={0}>
                 <thead>
                     <tr>
                         <td colSpan={dungeon != null ? Math.sqrt(dungeon.rooms) : 1}>Dungeon</td>
@@ -121,14 +120,13 @@ function DungeonRoom({character, updateCurrentCharacter}) {
                 <tbody>
                     {dungeon != null ? makeDungeon() : null}
                 </tbody>
-            </table> : <Battle handleBattleWon={handleBattleWon} character={character} enemies={enemies != null ? enemies : []}  updateCurrentCharacter={updateCurrentCharacter} difficulty={difficulty}/>}
+            </DungeonContainer> : <Battle handleBattleWon={handleBattleWon} character={character} enemies={enemies != null ? enemies : []}  updateCurrentCharacter={updateCurrentCharacter} difficulty={difficulty}/>}
 
             {!battle ? <div>
-                <button onClick={() => movePlayer([0, 0], dungeon)}>Move to Origin</button>
-                <button onClick={() => movePlayer([position[0], position[1] + 1], dungeon)}>Move Right</button>
-                <button onClick={() => movePlayer([position[0], position[1] - 1], dungeon)}>Move Left</button>
-                <button onClick={() => movePlayer([position[0] + 1, position[1]], dungeon)}>Move Down</button>
-                <button onClick={() => movePlayer([position[0] - 1, position[1]], dungeon)}>Move Up</button>
+                <button onClick={() => movePlayer([position[0], position[1] + 1], dungeon)}>→</button>
+                <button onClick={() => movePlayer([position[0], position[1] - 1], dungeon)}>←</button>
+                <button onClick={() => movePlayer([position[0] + 1, position[1]], dungeon)}>↓</button>
+                <button onClick={() => movePlayer([position[0] - 1, position[1]], dungeon)}>↑</button>
             </div> : null}
         </div>
     )

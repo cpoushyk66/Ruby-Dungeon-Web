@@ -7,6 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
+#Users - Template
+
+u1 = User.create(username: "charlottep", password: "test", admin: 3, character_tokens: 99, image: "https://pbs.twimg.com/profile_images/1592256182835724289/femZcIot_400x400.jpg")
+
 #Items - Swords
 wooden_sword = Item.create(
     name: "Wooden Sword",
